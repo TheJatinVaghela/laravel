@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
         // factoryStudent::factory()->count(5)->create();
          $this->call([
              FactoryStudentSeeder::class,
-             CRUDuserSeeder::class
+             CRUDuserSeeder::class,
+             paginationSeeder::class
          ]);
     }
 }

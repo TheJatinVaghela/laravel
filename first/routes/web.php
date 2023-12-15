@@ -3,6 +3,8 @@
 use App\Http\Controllers\CRUDuser;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController; // NOT app Use App
+use App\Http\Controllers\pagination_controller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +18,7 @@ use App\Http\Controllers\firstController; // NOT app Use App
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
 
 //  Route::get('/anotherName',function(){
 //   return view('post');
@@ -75,3 +77,6 @@ Route::controller(CRUDuser::class)->group(function(){
 // add user with form
 Route::view('/add_cruduser','addcrudUser')->name("add_cruduser");
 Route::post('addcruduser',[CRUDuser::class,'add_new_cruduser'])->name('submit_addNewcruduser');
+
+//pagination
+Route::get('/pagination',[pagination_controller::class,'show_pagination'])->name("show_pagination");
