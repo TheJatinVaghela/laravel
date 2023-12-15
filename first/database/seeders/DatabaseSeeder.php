@@ -32,7 +32,9 @@ class DatabaseSeeder extends Seeder
          $this->call([
              FactoryStudentSeeder::class,
              CRUDuserSeeder::class,
-             paginationSeeder::class
+             paginationSeeder::class,
+             joincitySeeder::class,
+             joinstudentSeeder::class
          ]);
     }
 }

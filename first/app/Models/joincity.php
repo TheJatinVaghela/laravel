@@ -4,12 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class CRUDuser extends Model
+class joincity extends Model
 {
     use HasFactory;
-    public $table = 'crudusers';
-
-
+    public $table = 'joincitys';
 }

@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\CRUDuser;
+use App\Http\Controllers\joinstudent_controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController; // NOT app Use App
+// use App\Http\Controllers\joinstudent_controller;
 use App\Http\Controllers\pagination_controller;
+use App\Models\joinstudent;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +83,6 @@ Route::post('addcruduser',[CRUDuser::class,'add_new_cruduser'])->name('submit_ad
 
 //pagination
 Route::get('/pagination',[pagination_controller::class,'show_pagination'])->name("show_pagination");
+
+//JoIN
+Route::get('/join',[joinstudent_controller::class,'showjoinstudent'])->name('joinstudent');
