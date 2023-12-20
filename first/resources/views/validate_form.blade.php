@@ -11,16 +11,16 @@
 <body>
 
     {{-- {{dump($page)}} --}}
-        @if ($errors->all())
-          <div class="alert alert-primary container" role="alert">
-              <ul>
+        {{-- @if ($errors->any())
+          <div class="mt-3 alert alert-primary container" role="alert">
+              <ul class="list-group list-unstyled">
                     @foreach ($errors->all() as $value)
-                    <li>{{$value}}</li>
+                    <li class="">{{$value}}</li>
                     @endforeach
                 </ul>
           </div>
         </>
-        @endif
+        @endif --}}
 
 
     @switch($page)
@@ -31,25 +31,51 @@
                 @method('post')
                 <div class="row">
                     <div class="mb-3 col">
+
+                        @error('username')
+                        <span class="text-danger">
+                            {{$message}}
+                        </span>
+                        @enderror
+                        <br/>
                         <label for="name" class="form-label fw-bold">Name :- </label>
-                        <input name="username" type="text" class="form-control" aria-describedby="willrememberyou_name"/>
+                        <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" aria-describedby="willrememberyou_name"/>
                         <div id="willrememberyou_name" class="form-text">We Will Know</div>
                     </div>
                     <div class="mb-3 col">
+
+                        @error('useremail')
+                        <span class="text-danger">
+                            {{$message}}
+                        </span>
+                        @enderror
+                        <br/>
                         <label for="email" class="form-label fw-bold">Email :- </label>
-                        <input name="useremail" type="email" class="form-control" aria-describedby="willrememberyou_email"/>
+                        <input name="useremail" type="email" class="form-control @error('useremail') is-invalid @enderror" aria-describedby="willrememberyou_email"/>
                         <div id="willrememberyou_email" class="form-text">We Will Not Share Email</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="mb-3 col">
+                        @error('usercity')
+                        <span class="text-danger">
+                            {{$message}}
+                        </span>
+                        @enderror
+                        <br/>
                         <label for="city" class="form-label fw-bold">City :- </label>
-                        <input name="usercity" type="city" class="form-control" aria-describedby="willrememberyou_city"/>
+                        <input name="usercity" type="city" class="form-control @error('usercity') is-invalid @enderror" aria-describedby="willrememberyou_city"/>
                         <div id="willrememberyou_city" class="form-text">We Will know where you live</div>
                     </div>
                     <div class="mb-3 col">
+                        @error('userage')
+                        <span class="text-danger">
+                                {{$message}}
+                        </span>
+                        @enderror
+                        <br/>
                         <label for="age" class="form-label fw-bold">Age :- </label>
-                        <input name="userage" type="number" class="form-control" aria-describedby="willrememberyou_age"/>
+                        <input name="userage" type="number" class="form-control @error('userage') is-invalid @enderror" aria-describedby="willrememberyou_age"/>
                         <div id="willrememberyou_age" class="form-text">We Will know where you live</div>
                     </div>
                 </div>
