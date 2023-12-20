@@ -16,6 +16,7 @@
 <a class="btn btn-primary mr-3" href="{{route("crudusers")}}">crud Users</a>
 <a class="btn btn-primary mr-3" href="{{route("show_pagination")}}">pagination</a>
 <a class="btn btn-primary mr-3" href="{{route("joinstudent")}}">join student city</a>
+<a class="btn btn-primary mr-3" href="{{route("validateuser")}}">validateuser</a>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

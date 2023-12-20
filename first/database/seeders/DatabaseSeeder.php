@@ -34,7 +34,8 @@ class DatabaseSeeder extends Seeder
              CRUDuserSeeder::class,
              paginationSeeder::class,
              joincitySeeder::class,
-             joinstudentSeeder::class
+             joinstudentSeeder::class,
+             ValidateuserSeeder::class
          ]);
     }
 }

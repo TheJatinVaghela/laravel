@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController; // NOT app Use App
 // use App\Http\Controllers\joinstudent_controller;
 use App\Http\Controllers\pagination_controller;
+use App\Http\Controllers\ValidateuserController;
 use App\Models\joinstudent;
 
 /*
@@ -86,3 +87,12 @@ Route::get('/pagination',[pagination_controller::class,'show_pagination'])->name
 
 //JoIN
 Route::get('/join',[joinstudent_controller::class,'showjoinstudent'])->name('joinstudent');
+
+//VALIDATE
+Route::controller(ValidateuserController::class)->group(function()
+{
+    Route::get('/validateuser','showuser')->name('validateuser');
+    Route::post('/addvalidateuser','adduser')->name('addvalidateuser');
+    Route::put('/updatevalidateuser','updateuser')->name('updatevalidateuser');
+    Route::delete('/deletevalidateuser','deleteuser')->name('deletevalidateuser');
+});
