@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\validateuser;
 use App\Http\Requests\StorevalidateuserRequest;
 use App\Http\Requests\UpdatevalidateuserRequest;
+use App\Http\Requests\valideuserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -44,15 +45,22 @@ class ValidateuserController extends Controller
                 break;
         }
     }
-    public function adduser(Request $info){
-        $info->validate(
+    public function adduser(/*Request $info* /*this works but we use*/ valideuserRequest $info){
+        //this works but we create a new Request class and do stuf with it
+        /*$info->validate(
             [
                 'username'=>'required',
                 'useremail'=>'required|email',
                 'usercity'=>'required',
-                'userage'=>'required|integer'
+                'userage'=>'required|numeric|between:18,60'
+            ],
+            [
+                'username.required' => 'username IS rEQuired' ,
+                'useremail.required' => 'useremail IS rEQuired' ,
+                'usercity.required' => 'usercity IS rEQuired' ,
+                'userage.required' => 'userage IS rEQuired'
             ]
-        );
+        );*/
          $adduser = DB::table('validateusers')->insertGetId(
              [
                  'created_at'=>now(),

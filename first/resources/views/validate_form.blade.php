@@ -22,6 +22,10 @@
         </>
         @endif --}}
 
+        {{-- i have not added password in this but if in the near futchr here is tha link --}}
+        {{-- https://www.youtube.com/watch?v=x30sdZueaTg&list=PL0b6OzIxLPbz7JK_YYrRJ1KxlGG4diZHJ&index=26 --}}
+        {{-- timestem 38:56 --}}
+
 
     @switch($page)
         @case('add')
@@ -39,7 +43,7 @@
                         @enderror
                         <br/>
                         <label for="name" class="form-label fw-bold">Name :- </label>
-                        <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" aria-describedby="willrememberyou_name"/>
+                        <input name="username" type="text" value="{{old('username')}}" class="form-control @error('username') is-invalid @enderror" aria-describedby="willrememberyou_name"/>
                         <div id="willrememberyou_name" class="form-text">We Will Know</div>
                     </div>
                     <div class="mb-3 col">
@@ -51,7 +55,7 @@
                         @enderror
                         <br/>
                         <label for="email" class="form-label fw-bold">Email :- </label>
-                        <input name="useremail" type="email" class="form-control @error('useremail') is-invalid @enderror" aria-describedby="willrememberyou_email"/>
+                        <input name="useremail" type="email" value="{{old('useremail')}}" class="form-control @error('useremail') is-invalid @enderror" aria-describedby="willrememberyou_email"/>
                         <div id="willrememberyou_email" class="form-text">We Will Not Share Email</div>
                     </div>
                 </div>
@@ -64,7 +68,7 @@
                         @enderror
                         <br/>
                         <label for="city" class="form-label fw-bold">City :- </label>
-                        <input name="usercity" type="city" class="form-control @error('usercity') is-invalid @enderror" aria-describedby="willrememberyou_city"/>
+                        <input name="usercity" type="city" value="{{old('usercity')}}" class="form-control @error('usercity') is-invalid @enderror" aria-describedby="willrememberyou_city"/>
                         <div id="willrememberyou_city" class="form-text">We Will know where you live</div>
                     </div>
                     <div class="mb-3 col">
@@ -75,13 +79,14 @@
                         @enderror
                         <br/>
                         <label for="age" class="form-label fw-bold">Age :- </label>
-                        <input name="userage" type="number" class="form-control @error('userage') is-invalid @enderror" aria-describedby="willrememberyou_age"/>
+                        <input name="userage" type="number" value="{{old('userage')}}" class="form-control @error('userage') is-invalid @enderror" aria-describedby="willrememberyou_age"/>
                         <div id="willrememberyou_age" class="form-text">We Will know where you live</div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary fw-bold">add User</button>
             </form>
             @break
+
         @case('update')
         <h1 class="text-uppercase fw-bold text-center mt-5">Update User Form</h1>
             @if($data)
