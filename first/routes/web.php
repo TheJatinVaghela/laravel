@@ -92,6 +92,7 @@ Route::get('/join',[joinstudent_controller::class,'showjoinstudent'])->name('joi
 Route::controller(ValidateuserController::class)->group(function()
 {
     Route::get('/validateuser','showuser')->name('validateuser');
+    Route::get('/validate_user_form/{page}/{id}','showform')->name('validate_user');
     Route::post('/addvalidateuser','adduser')->name('addvalidateuser');
     Route::put('/updatevalidateuser','updateuser')->name('updatevalidateuser');
     Route::delete('/deletevalidateuser','deleteuser')->name('deletevalidateuser');

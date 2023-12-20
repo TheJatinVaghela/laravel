@@ -11,6 +11,9 @@
 </head>
 <body class="">
 <div class="container">
+
+
+    <a class="btn btn-primary" href="validate_user_form/add/NULL">addUser</a>
     <!-- Happiness is not something readymade. It comes from your own actions. - Dalai Lama -->
     {{-- {{dump($data)}} --}}
     <table class="table table-bordered border-primary table-dark table-striped">
@@ -29,13 +32,14 @@
             @foreach ($data as $key =>$value)
 
             <tr>
+
               <th scope="row">{{$value->id}}</th>
               <td>{{$value->username}}</td>
               <td>{{$value->useremail}}</td>
               <td>{{$value->usercity}}</td>
               <td>{{$value->userage}}</td>
-              <td><a class="btn btn-primary" href="rout"></a></td>
-              <td><a class="btn btn-primary" href="rout"></a></td>
+              <td><a class="btn btn-primary" href="/validate_user_form/update/<?php echo $value->id?>">Update</a></td>
+              <td><a class="btn btn-primary" href="/validate_user_form/delete/<?php echo $value->id?>">Delete</a></td>
             </tr>
             @endforeach
     </table>
@@ -44,3 +48,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
