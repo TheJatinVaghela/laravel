@@ -18,7 +18,13 @@ class userController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $user = User::all();
+        } catch (\Exception $th) {
+            //throw $th;
+            return response()->json(["message"=>$th->getMessage(),"status"=>500]);
+        }
+        return response()->json(["data"=>$user,"status"=>200]);
     }
 
     /**

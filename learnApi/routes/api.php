@@ -26,4 +26,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // Route::get('/user',function(){ p('Working');});
-Route::post('/user/store',[userController::class,'store']);
+Route::controller(userController::class)->group(function (){
+
+    Route::post('/user/store','store');
+    Route::get('/user/get',"index");
+});
