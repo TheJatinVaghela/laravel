@@ -28,6 +28,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('/user',function(){ p('Working');});
 Route::controller(userController::class)->group(function (){
 
-    Route::post('/user/store','store');
-    Route::get('/user/get',"index");
+    Route::post('/user/store','store'); // Store user
+    Route::get('/user/get',"index"); // get all users
+    Route::get('/user/show/id={id}','show'); // show spasific user
+    Route::put('/user/update/id={id}','update'); // update spacific user
+    Route::delete('/user/delete/id={id}','destroy'); /// delete spacific user
 });

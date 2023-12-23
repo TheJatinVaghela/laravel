@@ -89,7 +89,12 @@ class userController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $data = User::find($id);
+         } catch (\Throwable $th) {
+             return response()->json(["data"=>null,"message"=>$th->getMessage(),"status"=>500]);
+         }
+         return response()->json(["data"=>$data,"message"=>'Done',"status"=>200]);
     }
 
     /**
@@ -105,7 +110,25 @@ class userController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       // in update on postman use x-www-form-unlencoded not for-data
+       $chackuser = User::find($id);
+       if($chackuser == NULL){
+           return response()->json(["data"=>NULL,"message"=>"user not found","status"=>400]);
+       };
+       DB::beginTransaction();
+       try {
+           // User::find($id)->name = $request->name // OR
+           $chackuser->name =  $request["name"];
+           $chackuser->email =  $request["email"];
+           $chackuser->save();
+           DB::commit();
+           $chackuser = User::find($id);
+       } catch (\Exception $th) {
+           DB::rollBack();
+           $chackuser = NULL;
+           return response()->json(["data"=>null,"message"=>$th->getMessage(),"status"=>500]);
+       }
+       return response()->json(["data"=>$chackuser,"message"=>'Done',"status"=>200]);
     }
 
     /**
@@ -113,6 +136,19 @@ class userController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $chackuser = User::find($id);
+        if($chackuser == NULL) {
+            return response()->json(["data"=>NULL,"message"=>"user not found","status"=>400]);
+        };
+        try {
+            DB::beginTransaction();
+            User::find($id)->delete();
+            DB::commit();
+        } catch (\Exception $th) {
+            DB::rollBack();
+            return response()->json(["data"=>null,"message"=>$th->getMessage(),"status"=>500]);
+        }
+
+        return response()->json(["data"=>"succsess","message"=>'Done',"status"=>200]);
     }
 }
