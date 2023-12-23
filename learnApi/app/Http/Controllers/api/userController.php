@@ -10,7 +10,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
 class userController extends Controller
 {
     /**
@@ -126,6 +125,35 @@ class userController extends Controller
        } catch (\Exception $th) {
            DB::rollBack();
            $chackuser = NULL;
+           return response()->json(["data"=>null,"message"=>$th->getMessage(),"status"=>500]);
+       }
+       return response()->json(["data"=>$chackuser,"message"=>'Done',"status"=>200]);
+    }
+
+    /**
+     * Change password wit patch
+     */
+    public function change_password(Request $request , $id){
+        $chackuser = User::find($id);
+       if($chackuser == NULL){
+           return response()->json(["data"=>NULL,"message"=>"user not found","status"=>400]);
+       };
+       if(!(Hash::check($request["old_password"],$chackuser->password))){
+
+        return response()->json(["data"=>$request["old_password"],"message"=>"Old Password Does Not Match","status"=>400]);
+       };
+       if($request["new_password"] != $request["confirm_password"]){
+        return response()->json(["data"=>NULL,"message"=>"new Password Does Not Match With Confirm Password","status"=>400]);
+       };
+
+       try {
+        DB::beginTransaction();
+        $chackuser->password = bcrypt($request["new_password"]);
+        $chackuser->save();
+        DB::commit();
+       } catch (\Exception $th) {
+            DB::rollBack();
+            $chackuser = null;
            return response()->json(["data"=>null,"message"=>$th->getMessage(),"status"=>500]);
        }
        return response()->json(["data"=>$chackuser,"message"=>'Done',"status"=>200]);

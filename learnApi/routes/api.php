@@ -33,4 +33,5 @@ Route::controller(userController::class)->group(function (){
     Route::get('/user/show/id={id}','show'); // show spasific user
     Route::put('/user/update/id={id}','update'); // update spacific user
     Route::delete('/user/delete/id={id}','destroy'); /// delete spacific user
+    Route::patch('/user/change_password/id={id}','change_password'); //change password with patch
 });
