@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatethirduserRequest extends FormRequest
+class UpdatecurdapiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdatethirduserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>'string|max:200',
+            'email'=>'email|unique:curdapis,email',
+            'new_password'=>'password|confirmed',
+
         ];
     }
 }

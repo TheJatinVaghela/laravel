@@ -4,24 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\thirduser as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class thirduser extends Model
+class curdapi extends Model
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
+    public $table = 'curdapis';
 
     protected $fillable = [
-        "username",
-        "useremail",
-        "userpassword"
-    ];
-    protected $hidden = [
-        'userpassword',
+        'name',
+        'email',
+        'password'
     ];
 
-    protected $casts = [
-        'userpassword' => 'hashed'
+    protected $hidden = [
+        'password' ,
+        'created_at',
+        'updated_at'
+    ];
+
+    protected $cast = [
+        'password' =>'hashed'
     ];
 }

@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\thirduser;
+use App\Models\curdapi;
 use Illuminate\Auth\Access\Response;
 
-class ThirduserPolicy
+class CurdapiPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class ThirduserPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, thirduser $thirduser): bool
+    public function view(User $user, curdapi $curdapi): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class ThirduserPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, thirduser $thirduser): bool
+    public function update(User $user, curdapi $curdapi): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class ThirduserPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, thirduser $thirduser): bool
+    public function delete(User $user, curdapi $curdapi): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class ThirduserPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, thirduser $thirduser): bool
+    public function restore(User $user, curdapi $curdapi): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class ThirduserPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, thirduser $thirduser): bool
+    public function forceDelete(User $user, curdapi $curdapi): bool
     {
         //
     }

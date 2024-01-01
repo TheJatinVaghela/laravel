@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\thirduser>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\curdapi>
  */
-class ThirduserFactory extends Factory
+class CurdapiFactory extends Factory
 {
     /**
      * Define the model's default state.

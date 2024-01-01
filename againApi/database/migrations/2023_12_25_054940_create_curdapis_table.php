@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('thirdusers', function (Blueprint $table) {
+        Schema::create('curdapis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('username');
-            $table->string('useremail')->unique();
-            $table->string('userpassword')->default('password');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('thirdusers');
+        Schema::dropIfExists('curdapis');
     }
 };
